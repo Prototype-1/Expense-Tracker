@@ -1,3 +1,6 @@
 go.sum 
 expense-tracker 
 *.json 
+/bin/
+*.exe
+*.log
