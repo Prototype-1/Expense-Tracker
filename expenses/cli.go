@@ -1,4 +1,4 @@
-//Handles user input/output for the CLI.
+// cli.go - Handles user input/output for the CLI
 package expenses
 
 import (
@@ -7,10 +7,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"database/sql"
 )
 
-func StartCLI() {
-	repo := NewExpenseRepository()
+func StartCLI(db *sql.DB) {
+	repo := NewExpenseRepository(db) 
 	service := NewExpenseService(repo)
 	reader := bufio.NewReader(os.Stdin)
 
@@ -68,3 +69,7 @@ func StartCLI() {
 		}
 	}
 }
+
+
+
+
