@@ -4,7 +4,8 @@ package expenses
 import (
 	"database/sql"
 	"log"
-	_ "github.com/lib/pq" 
+
+	_ "github.com/lib/pq"
 )
 
 type ExpenseRepository struct {
@@ -24,11 +25,9 @@ func InitDB(dataSourceName string) (*sql.DB, error) {
 	return db, nil
 }
 
-
 func NewExpenseRepository(db *sql.DB) *ExpenseRepository {
 	return &ExpenseRepository{DB: db}
 }
-
 
 func (r *ExpenseRepository) AddExpense(description string, amount float64, category string) {
 	_, err := r.DB.Exec(
@@ -59,3 +58,4 @@ func (r *ExpenseRepository) ListExpenses() []Expense {
 	return expenses
 }
 
+//update expense tracker
