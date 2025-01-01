@@ -29,6 +29,7 @@ func NewExpenseRepository(db *sql.DB) *ExpenseRepository {
 	return &ExpenseRepository{DB: db}
 }
 
+//Manage data writing
 func (r *ExpenseRepository) AddExpense(description string, amount float64, category string) {
 	_, err := r.DB.Exec(
 		"INSERT INTO expenses (description, amount, category) VALUES ($1, $2, $3)",
