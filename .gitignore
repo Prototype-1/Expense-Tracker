@@ -1,4 +1,3 @@
-go.sum 
 expense-tracker 
 *.json 
 /bin/
