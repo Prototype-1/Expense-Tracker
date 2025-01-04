@@ -35,3 +35,35 @@ func TestListExpenses(t *testing.T) {
     assert.Equal(t, 50.0, expenses[0].Amount)
     mockRepo.AssertExpectations(t)
 }
+
+func TestUpdateExpenses(t *testing.T) {
+    mockRepo := new(MockExpenseRepository)
+
+    id := 1
+    description := "Updated Description"
+    amount := 150.0
+    category := "Update Category"
+
+    mockRepo.On("UpdateExpense", id, description, amount, category).Return(nil).Once()
+
+    err := mockRepo.UpdateExpense(id, description, amount, category)
+
+    assert.NoError(t, err)
+
+    mockRepo.AssertExpectations(t)
+}
+
+func TestDeleteExpenses(t *testing.T) {
+    mockRepo := new(MockExpenseRepository)
+
+    id := 1
+
+    mockRepo.On("DeleteExpense", id).Return(nil).Once()
+
+    err := mockRepo.DeleteExpense(id)
+
+    assert.NoError(t, err)
+
+    mockRepo.AssertExpectations(t)
+
+}

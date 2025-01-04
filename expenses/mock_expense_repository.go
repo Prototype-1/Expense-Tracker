@@ -15,3 +15,12 @@ func (m *MockExpenseRepository) ListExpenses() []Expense {
     return args.Get(0).([]Expense)
 }
 
+func (m *MockExpenseRepository) UpdateExpense(id int, description string, amount float64, category string) error {
+args := m.Called(id, description, amount, category)
+return args.Error(0)
+}
+
+func (m *MockExpenseRepository) DeleteExpense(id int) error {
+    args := m.Called(id)
+    return args.Error(0)
+}
